@@ -7,5 +7,8 @@ class CreateCourses < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    # validates :prereq_id, presence: false
+
   end
 end

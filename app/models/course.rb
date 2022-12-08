@@ -23,12 +23,18 @@ class Course < ApplicationRecord
   belongs_to :prerequisite,
   primary_key: :id,
   foreign_key: :prereq_id,
-  class_name: :Course
+  class_name: :Course,
+  optional: true
 
   # to write Course.first.postreqs and returns a list of courses you can take after taking this course
   has_many :postreqs,
     primary_key: :id,
     foreign_key: :prereq_id,
     class_name: :Course
+
+  belongs_to :instructor,
+    primary_key: :id,
+    foreign_key: :instructor_id,
+    class_name: :User
 
 end
