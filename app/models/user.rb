@@ -17,4 +17,5 @@ class User < ApplicationRecord
   has_many :courses,
     through: :enrollments,
     source: :course
+
 end

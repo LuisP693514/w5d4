@@ -16,9 +16,19 @@ class Course < ApplicationRecord
     foreign_key: :course_id,
     class_name: :Enrollment
 
-  has_many :students,
+  has_many :enrolled_students,
     through: :enrollments,
     source: :student
 
-  
+  belongs_to :prerequisite,
+  primary_key: :id,
+  foreign_key: :prereq_id,
+  class_name: :Course
+
+  # to write Course.first.postreqs and returns a list of courses you can take after taking this course
+  has_many :postreqs,
+    primary_key: :id,
+    foreign_key: :prereq_id,
+    class_name: :Course
+
 end
